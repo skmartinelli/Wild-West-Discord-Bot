@@ -38,6 +38,21 @@ async def on_message(message):
         else:
             await client.say("User is not in a voice channel")
 
+    if "!moo" in message.content:
+        user = message.author
+        voice_channel = user.voice.channel
+        channel = None
+        if voice_channel != None:
+            channel = voice_channel.name
+            await message.channel.send("User is in the channel: " + channel)
+            vc = await voice_channel.connect()
+            vc.play(discord.FFmpegPCMAudio('moo.mp3'), after=lambda e: print('done', e))
+            while not vc.is_playing():
+                await asyncio.sleep(1)
+            vc.stop()
+            await vc.disconnect()
+        else:
+            await client.say("User is not in a voice channel")
 
 
 client.run(YOURTOKEN)
