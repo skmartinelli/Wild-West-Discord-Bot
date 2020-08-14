@@ -22,18 +22,17 @@ async def on_message(message):
         await message.channel.send("howdy!")
 
     if "!showdown" in message.content:
-        user = context.message.author
-        voice_channel = user.voice.voice_channel
+        user = message.author
+        voice_channel = user.voice.channel
         channel = None
-        if voice_channel != None
+        if voice_channel != None:
             channel = voice_channel.name
-            await client.say("User is in the channel: " + channel)
-            vc = await client.join)voice_channel(voice_channel)
-            player = vc.create_ffmpeg_player('goodbadugly.mp3', after=lambda: print('done'))
-            player.start()
-            while not player.isdone():
+            await message.channel.send("User is in the channel: " + channel)
+            vc = await voice_channel.connect()
+            vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
+            while vc.is_playing():
                 await asyncio.sleep(1)
-            player.stop()
+            vc.stop()
             await vc.disconnect()
         else:
             await client.say("User is not in a voice channel")
