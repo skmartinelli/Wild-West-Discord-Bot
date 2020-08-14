@@ -1,4 +1,5 @@
 import discord
+import asyncio
 
 from discord.utils import get
 from discord.ext import commands
@@ -30,7 +31,7 @@ async def on_message(message):
             await message.channel.send("User is in the channel: " + channel)
             vc = await voice_channel.connect()
             vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
-            while vc.is_playing():
+            while not vc.is_playing():
                 await asyncio.sleep(1)
             vc.stop()
             await vc.disconnect()
