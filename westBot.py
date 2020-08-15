@@ -34,12 +34,42 @@ async def on_message(message):
             vc = await voice_channel.connect()
             
             
+            if startcase == 0:
+                vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
+                
+                
+                while vc.is_playing():    
+                    await asyncio.sleep(1)
+                
+                
+                
+                vc.stop()
+                await vc.disconnect()
+
             
-            vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
-            while vc.is_playing():
-                await asyncio.sleep(1)
-            vc.stop()
-            await vc.disconnect()
+            elif startcase == 1:
+                vc.play(discord.FFmpegPCMAudio('goodbadugly225.mp3'), after=lambda e: print('done', e))
+                
+                
+                while vc.is_playing():
+                    await asyncio.sleep(1)
+                
+                
+                vc.stop()
+                await vc.disconnect()
+        
+            
+            elif startcase == 2:
+                vc.play(discord.FFmpegPCMAudio('goodbadugly454.mp3'), after=lambda e: print('done', e))
+                
+                
+                while vc.is_playing():
+                    await asyncio.sleep(1)
+                
+                
+                vc.stop()
+                await vc.disconnect()        
+        
         
         
         
