@@ -32,11 +32,17 @@ async def on_message(message):
             channel = voice_channel.name
             await message.channel.send("User is in the channel: " + channel)
             vc = await voice_channel.connect()
+            
+            
+            
             vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
             while vc.is_playing():
                 await asyncio.sleep(1)
             vc.stop()
             await vc.disconnect()
+        
+        
+        
         else:
             await client.say("User is not in a voice channel")
 
