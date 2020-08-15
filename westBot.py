@@ -24,7 +24,10 @@ async def on_message(message):
         await message.channel.send("howdy!")
 
     if "!showdown" in message.content:
-        startcase = random.randint(0,2)
+        # startcase = random.randint(0,2)
+        startcase = 0
+        
+        # FIXME XXX START CASE SHOULD BE RANDOM AFTER TESTING!!! FIXME XXX
         user = message.author
         voice_channel = user.voice.channel
         channel = None
@@ -35,11 +38,12 @@ async def on_message(message):
             
             
             if startcase == 0:
+                endDistances = [146.045, 166, 294.47, 434]
                 vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
                 
-                
-                while vc.is_playing():    
-                    await asyncio.sleep(1)
+
+            
+                await asyncio.sleep(434)
                 
                 
                 
@@ -77,22 +81,23 @@ async def on_message(message):
             await client.say("User is not in a voice channel")
 
     if "!moo" in message.content:
+        # Set the index and the cutoff
+        
         index = 0
-        cutoff = 3
+        cutoff = 5
         user = message.author
         voice_channel = user.voice.channel
         channel = None
+        
+        # Connect to the voice channel
         if voice_channel != None:
             channel = voice_channel.name
             await message.channel.send("User is in the channel: " + channel)
             vc = await voice_channel.connect()
             vc.play(discord.FFmpegPCMAudio('moo.mp3'), after=lambda e: print('done', e))
-            while vc.is_playing():
-                if index < cutoff:
-                    await asyncio.sleep(1)
-                else:
-                    vc.stop()
-                index += 1
+            
+            await asyncio.sleep(cutoff)
+            
             vc.stop()
             await vc.disconnect()
         else:
