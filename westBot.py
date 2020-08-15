@@ -11,10 +11,6 @@ YOURTOKEN = "NzQzOTE2NTY4MjY1ODgzODAw.XzboSw.qRX0rkF_0hdjBWpmYUg1bvyx2gc"
 
 client = discord.Client()
 
-def playmusic(timesList):
-    pass
-
-
 
 @client.event
 async def on_ready():
@@ -27,8 +23,10 @@ async def on_message(message):
         await message.channel.send("howdy!")
 
     if "!showdown" in message.content:
-        startcase = random.randint(0,2)
-        
+        global vc
+        #startcase = random.randint(0,2)
+        # XXX
+        startcase = 0
         user = message.author
         voice_channel = user.voice.channel
         channel = None
@@ -39,11 +37,12 @@ async def on_message(message):
             
             
             if startcase == 0:
-                endDistances = [146.045, 166, 294.47, 434]
+                endDistances = [145, 166, 294.47, 434]
                 vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
                 
 
-                length = random.choice(endDistances)
+                #length = random.choice(endDistances)
+                length = 144.8
                 await asyncio.sleep(length)
                 
                 
@@ -54,12 +53,11 @@ async def on_message(message):
             
             elif startcase == 1:
                 
-                endDistances = [150.6, 306]
+                endDistances = [150, 306]
                 vc.play(discord.FFmpegPCMAudio('goodbadugly225.mp3'), after=lambda e: print('done', e))
                 
                 length = random.choice(endDistances)
                 await asyncio.sleep(length)
-                
                 
                 vc.stop()
                 await vc.disconnect()
@@ -69,18 +67,22 @@ async def on_message(message):
                 vc.play(discord.FFmpegPCMAudio('goodbadugly454.mp3'), after=lambda e: print('done', e))
                 
                 
-                await asyncio.sleep(138)
+                await asyncio.sleep(137.5)
                 
                 
                 vc.stop()
                 await vc.disconnect()        
-        
-        
-        
-        
+        # If they aren't in a vc
         else:
             await client.say("User is not in a voice channel")
 
+    if "bang" in message.content:
+        global vc
+        if vc.is_playing():
+            await message.channel.send("You fired too early and lost the duel, you suck")
+        else:
+            await message.channel.send("You won the duel :D")
+    
     if "!moo" in message.content:
         # Set the index and the cutoff
         
