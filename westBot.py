@@ -25,7 +25,7 @@ async def on_message(message):
 
     if "!showdown" in message.content:
         # startcase = random.randint(0,2)
-        startcase = 0
+        startcase = 2
         
         # FIXME XXX START CASE SHOULD BE RANDOM AFTER TESTING!!! FIXME XXX
         user = message.author
@@ -42,8 +42,8 @@ async def on_message(message):
                 vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
                 
 
-            
-                await asyncio.sleep(434)
+                length = random.choice(endDistances)
+                await asyncio.sleep(length)
                 
                 
                 
@@ -52,11 +52,12 @@ async def on_message(message):
 
             
             elif startcase == 1:
+                
+                endDistances = [150.6, 306]
                 vc.play(discord.FFmpegPCMAudio('goodbadugly225.mp3'), after=lambda e: print('done', e))
                 
-                
-                while vc.is_playing():
-                    await asyncio.sleep(1)
+                length = random.choice(endDistances)
+                await asyncio.sleep(length)
                 
                 
                 vc.stop()
