@@ -11,6 +11,9 @@ YOURTOKEN = "NzQzOTE2NTY4MjY1ODgzODAw.XzboSw.qRX0rkF_0hdjBWpmYUg1bvyx2gc"
 
 client = discord.Client()
 
+def playmusic(timesList):
+    pass
+
 
 
 @client.event
@@ -24,10 +27,8 @@ async def on_message(message):
         await message.channel.send("howdy!")
 
     if "!showdown" in message.content:
-        # startcase = random.randint(0,2)
-        startcase = 2
+        startcase = random.randint(0,2)
         
-        # FIXME XXX START CASE SHOULD BE RANDOM AFTER TESTING!!! FIXME XXX
         user = message.author
         voice_channel = user.voice.channel
         channel = None
@@ -68,8 +69,7 @@ async def on_message(message):
                 vc.play(discord.FFmpegPCMAudio('goodbadugly454.mp3'), after=lambda e: print('done', e))
                 
                 
-                while vc.is_playing():
-                    await asyncio.sleep(1)
+                await asyncio.sleep(138)
                 
                 
                 vc.stop()
