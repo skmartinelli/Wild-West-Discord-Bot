@@ -65,6 +65,7 @@ async def on_message(message):
                 endDistances = [144.8, 166, 294.47]
                 vc.play(discord.FFmpegPCMAudio('goodbadugly.mp3'), after=lambda e: print('done', e))
                 length = random.choice(endDistances)
+                length = 5
                 await asyncio.sleep(length)
                 vc.stop()
 
@@ -92,10 +93,7 @@ async def on_message(message):
        # postDuel: used to check if it's after a duel and not before
        # isitmusic: used to check if sound played is a gunshot or the music
        # timer: Probably could be combined with postDuel to see if it's directly after a duel but it looks ugly in my head to do it that way LOL
-        global vc
-        global duelActive
         global postduel
-        global isitmusic
         global timer
         
         # If duel is happening (Music either playing or JUST ended)
