@@ -12,6 +12,8 @@ from discord.ext import commands
 
 YOURTOKEN = "NzQzOTE2NTY4MjY1ODgzODAw.XzboSw.qRX0rkF_0hdjBWpmYUg1bvyx2gc"
 
+# i have since changed the token
+
 client = discord.Client()
 vc = None
 duelActive = False
