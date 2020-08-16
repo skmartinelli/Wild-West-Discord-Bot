@@ -101,10 +101,10 @@ async def on_message(message):
         # If duel is happening (Music either playing or JUST ended)
         if duelActive: 
             if vc.is_playing() and isitmusic == True:
-                await message.channel.send("You fired too early and lost the duel, you suck")
+                await message.channel.send("You fired too early and lost the duel, sorry partner!")
                
             else: #if vc is not playing, duel is either HAPPENING, hasn't started, or has already ended
-                await message.channel.send("You won the duel :D")
+                await message.channel.send("You won the duel! Nice shootin' fella.")
                 isitmusic == False
                 vc.stop()
                 duelActive = False
@@ -114,13 +114,13 @@ async def on_message(message):
         
         # Duel has not been started or 
         elif not duelActive and postduel == False:
-            await message.channel.send("There's no duel happening!")
+            await message.channel.send("There's no duel goin' on!")
             vc.play(discord.FFmpegPCMAudio('bang.mp3'), after=lambda e: print('done', e))
             isitmusic == False
         
         # Duel has ended before timer runs out
         elif not duelActive and  postduel == True:
-            await message.channel.send("You lost the duel")
+            await message.channel.send("You lost the duel! Very careless of you.")
             vc.play(discord.FFmpegPCMAudio('bang.mp3'), after=lambda e: print('done', e))
             isitmusic == False
                 
