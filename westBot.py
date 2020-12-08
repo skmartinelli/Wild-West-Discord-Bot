@@ -1,3 +1,7 @@
+# Built this bot for fun over the summer at Yeehaw Hacks 2020 (well, not really at, because it was online). At first it was for fun but by the end I was mostly just scrambling
+# to get it to work as perfectly as I could so I ended up using a bunch of global variables because my sleep-deprived mind thought it best. Was a fun little project I'd love to
+# get back to and perfect some day because I think it could be a fun little game for me and my friends :)
+in
 import discord
 import asyncio
 import random
@@ -9,6 +13,8 @@ from discord.ext import commands
 # My code is very very ugly and often sloppy :(
 # I couldn't figure out how to define functions to use inside the async functions so next time I'd like to learn that
 # However I am proud of myself for getting this all to work! New to building projects :D
+
+
 
 YOURTOKEN = "NzQzOTE2NTY4MjY1ODgzODAw.XzboSw.qRX0rkF_0hdjBWpmYUg1bvyx2gc"
 
